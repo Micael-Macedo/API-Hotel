@@ -1,7 +1,7 @@
 const express = require("express");
 const db = require("../mysql");
 const session = require("express-session");
-
+const fs = require("fs");
 const cripto = require("crypto");
 const DADOS_CRIPTOGRAFAR = {
     algoritmo: "aes-256-cbc",
@@ -12,7 +12,7 @@ function criptografar(senha) {
     const cipher = cripto.createCipheriv(DADOS_CRIPTOGRAFAR.algoritmo, DADOS_CRIPTOGRAFAR.key, DADOS_CRIPTOGRAFAR.iv);
     let encrypted = cipher.update(senha);
     encrypted += cipher.final('hex');
-    return encrypted ;
+    return encrypted;
 };
 
 const route = express.Router();
@@ -25,10 +25,12 @@ route.use(session({
 
 route.get("/", (req, res) => {
     console.log(req.session.login)
-    db.getHotel(req.body.id, function(err, data){
-        if(err){ res.status(404).send("Erro ao buscar hotéis")}
-        else {console.log("estou no hotel encontrados",data[0]);
-        res.status(200).json(data[0]);}
+    db.getHotel(req.body.id, function (err, data) {
+        if (err) { res.status(404).send("Erro ao buscar hotéis") }
+        else {
+            console.log("estou no hotel encontrados", data[0]);
+            res.status(200).json(data[0]);
+        }
     })
 })
 route.post("/", (req, res) => {
@@ -48,15 +50,22 @@ route.delete("/", (req, res) => {
 })
 
 route.get("/usuario/", (req, res) => {
+    console.log(req.body);
     db.getUsuario(req.body.email, req.body.senha, function (err, data) {
-        if (err) { res.status(404).send("Login inválido ou inexistente")}
-        else { 
+        if (err) { res.status(404).send("Login inválido ou inexistente") }
+        else {
             req.session.login = {
                 email: data.email,
                 senha: data.senha
             }
-            console.log(req.session.login)
-            res.status(200).send(req.session.login) 
+            fs.writeFile("sessoes.txt", JSON.stringify(req.session.login), (err) => {
+                if (err)
+                    console.log(err);
+                else {
+                    console.log(req.session.login)
+                    res.status(200).send(req.session.login)
+                }
+            });
         }
     })
 })
@@ -98,7 +107,7 @@ route.post("/disponibilidade", (req, res) => {
 route.get("/disponibilidade", (req, res) => {
     console.log(req.body)
     db.buscarReserva(req.body.id, function (err, data) {
-        console.log("Data",data)
+        console.log("Data", data)
         if (err) { res.send(false).status(404) }
         else { res.send(data).status(200) }
     })

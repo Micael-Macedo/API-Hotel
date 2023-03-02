@@ -44,9 +44,9 @@ module.exports.getUsuario = (email, senha, callback) => {
     conn.query("Select * from usuarios where email = ?", [email], function (err, result) {
         if (err) callback(err, null);
         else {
-            usuario = result[0]
-            console.log("Senha descriptografada:", criptografia(usuario.senha, 0) )
-            if(senha == criptografia(usuario.senha, 0)){
+            let usuario = result[0];
+            console.log(usuario)
+            if(senha == usuario.senha){
                 callback(null, usuario)
             }
         }
