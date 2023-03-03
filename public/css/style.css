@@ -1,0 +1,136 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header {
+    background-color: #92D4F6;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1% 2%;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}
+
+nav ul li {
+    transition: 0.3s;
+}
+
+nav ul li:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    color: #881eda;
+}
+
+h1 {
+    text-align: center;
+    visibility: visible;
+}
+
+section {
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+}
+
+a.btn {
+    width: 150px;
+    padding: 6px 8px;
+    text-align: center;
+}
+
+a.btn.btn-primary {
+    font-size: 13px;
+    border: 2px solid black;
+    background-color: #9749D3 !important;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+a.btn.btn-primary:hover {
+    font-size: 13px;
+    border: 2px solid black;
+    transform: scale(1.5);
+    background-color: #881eda;
+}
+
+button.btn {
+    width: 150px;
+    padding: 6px 8px;
+    text-align: center;
+}
+
+button.btn.btn-primary {
+    font-size: 13px;
+    border: 2px solid black;
+    background-color: #9749D3 !important;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+button.btn.btn-primary:hover {
+    font-size: 13px;
+    border: 2px solid black;
+    transform: scale(1.5);
+    background-color: #881eda;
+}
+
+.form {
+    width: 60%;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 2% 8%;
+}
+.form label{
+    color: #881eda;
+}
+.form input{
+    width: 70%;
+}
+.input-group{
+    display: flex;
+}
+.input-group input[type=checkbox]{
+    width: 20px;
+    position: relative;
+    background-image: url("../imgs/eye.png");
+}
+.form h2{
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.endForm{
+    margin-top: 70px;
+}
+.imgLandingPage {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.imgLandingPage img {
+    max-width: 100%;
+}

@@ -3,7 +3,7 @@ const conn = db.createConnection({
     host: 'localhost',
     user: 'root',
     database: 'suhotel',
-    password: '1234'
+    port: 3307
 })
 const cripto = require("crypto");
 

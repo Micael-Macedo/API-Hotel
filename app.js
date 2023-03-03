@@ -3,7 +3,7 @@ const app = express();
 const bp = require("body-parser");
 const path = require("path");
 
-app.use(express.static(__dirname + "public"));
+app.use(express.static(__dirname + "/public"));
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 
@@ -18,7 +18,7 @@ app.get("/cadastro", (req, res) => {
     res.sendFile(path.join(__dirname, pages, "cadastro.html"))
 })
 app.get("/hoteis", (req, res) => {
-    res.sendFile(pages, "")
+    res.render("hotel")
 })
 app.get("/login", (req, res) => {
     res.sendFile(pages, "")

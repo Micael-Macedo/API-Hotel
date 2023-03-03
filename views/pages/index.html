@@ -1,54 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SuHoteis</title>
+    <title>Document</title>
     <link rel="stylesheet" href="http://localhost:8090/css/style.css">
+    <link rel="stylesheet" href="http://localhost:8090/css/mobilestyle.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 </head>
+
 <body>
-   <h1>SuHoteis</h1>
-   <section>
-    <h2>Cadastro Usuario</h2>
-    <form action="/hotel/usuario/" method="post">
-        <input type="email" name="email">
-        <input type="password" name="senha">
-        <button type="submit">Cadastrar Usuario</button>
-    </form>
-   </section>
-   <section>
-    <h2>Cadastro de Hotel</h2>
-    <form action="/hotel" method="post">
-        <label for="">Nome do Hotel</label>
-        <input type="text" name="nome">
-        <label for="">Endereço</label>
-        <input type="text" name="endereco">
-        <button type="submit">Cadastrar hotel</button>
-    </form>
-   </section>
-   <section>
-    <h2>Cadastro de Quarto</h2>
-    <form action="/hotel" method="post">
-        <label for="">Nome do Hotel</label>
-        <input type="text" name="nome">
-        <label for="">Endereço</label>
-        <input type="text" name="endereco">
-        <button type="submit">Cadastrar hotel</button>
-    </form>
-   </section>
-   <section>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a onclick="renderPage('index')"><img src="imgs/image 1.png" alt=""></a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a onclick="renderPage('putReserva')">Reserva</a>
+                </li>
+                <li>
+                    <a onclick="renderPage('getUsuario')">Login</a>
+                </li>
+                <li>
+                    <a onclick="renderPage('cadastroUsuario')">Cadastro</a>
+                </li>
+                <li>
+                    <a onclick="renderPage('hotel')">Hotel</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section name="index">
+            <h1>Bem vindo ao SuHotel, aqui o seu descanso será garantido</h1>
+            <div class="imgLandingPage">
+                <img src="imgs/image 2.png" alt="">
+            </div>
+            <div class="btn-options">
+                <button class="btn btn-primary" onclick="renderPage('putReserva')">Fazer reserva</button>
+                <button class="btn btn-primary" onclick="renderPage('cadastroUsuario')">Criar conta</button>
+            </div>
+        </section>
+        <section name="cadastroUsuario">
+            <div class="form">
+                <h2>Cadastro Usuario</h2>
+                <form action="/hotel/usuario/" method="post">
+                    <div class="form-content">
+                        <div>
+                            <label for="">Email</label>
+                            <br>
+                            <input type="email" name="email">
+                        </div>
+                        <div>
+                            <label for="">Senha</label>
+                            <div class="input-group">
+                                <input type="password" name="senha" id="senha1">
+                                <input type="checkbox" id="" onclick="btnSenha(1)">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">Confirmar Senha</label>
+                            <div class="input-group">
+                                <input type="password" id="senha2">
+                                <input type="checkbox" id="" onclick="btnSenha(2)">
+                            </div>
+                        </div>
+                        <div class="endForm">
+                            <p>*ao pressionar em cadastrar você concorda com o nosso termo de uso</p>
+                            <div class="btn-options">
+                                <button type="submit" class="btn btn-primary">Cadastrar Usuario</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section name="getUsuario">
+            <div class="form">
+                <h2>Faça seu login</h2>
+                <form action="/hotel/usuario/" method="get">
+                    <div class="form-content">
+                        <div>
+                            <label for="">Email</label>
+                            <br>
+                            <input type="email" name="email">
+                        </div>
+                        <div>
+                            <label for="">Senha</label>
+                            <div>
+                                <input type="password" name="senha" id="senha1">
+                                <input type="checkbox" id="" onclick="btnSenha(1)">
+                            </div>
+                        </div>
+                        <div>
+                            <a href="">esqueci minha senha</a>
+                        </div>
+                        <div class="btn-options">
+                            <a class="btn btn-primary" onclick="renderPage('cadastroUsuario')">Cadastrar</a>
+                            <button type="submit" class="btn btn-primary">Fazer login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section name="hotel">
+            <h2>Opções do hotel</h2>
+            <div class="btn-options">
+                <a class="btn btn-primary" onclick="renderPage('cadastroHotel')">Cadastrar Hotel</a>
+                <a class="btn btn-primary" onclick="renderPage('cadastroQuarto')">Cadastrar Quarto</a>
+                <a class="btn btn-primary" onclick="renderPage('cadastroReserva')">Cadastrar Reserva</a>
+            </div>
+        </section>
+        <section name="cadastroHotel">
+            <div class="form">
+                <h2>Cadastro de Hotel</h2>
+                <form action="/hotel" method="post">
+                    <div class="form-content">
+                        <div>
+                            <label for="">Nome do Hotel</label>
+                            <input type="text" name="nome">
+                        </div>
+                        <div>
+                            <label for="">Endereço</label>
+                            <input type="text" name="endereco">
+                        </div>
+                        <div class="btn-options">
+                            <button type="submit" class="btn btn-primary">Cadastrar hotel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section name="cadastroQuarto">
+            <div class="form">
+                <h2>Cadastro de Quarto</h2>
+                <form action="/hotel/quarto" method="post">
+                    <div class="form-content">
+                        <div>
+                            <label for="">id do Hotel</label>
+                            <input type="text" name="hotelId">
+                        </div>
+                        <div>
+                            <label for="">Numero do quarto</label>
+                            <input type="text" name="numero">
+                        </div>
+                        <div class="btn-options">
+                            <button type="submit" class="btn btn-primary">Cadastrar quarto</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section name="cadastroReserva">
+            <div class="form">
+                <h2>Cadastro de reserva</h2>
+                <form action="/hotel/disponibilidade" method="post">
+                    <div class="form-content">
+                        <div>
+                            <label for="">Id do quarto</label>
+                            <input type="number" name="quartoId">
+                        </div>
+                        <div>
+                            <label for="">Dia</label>
+                            <input type="date" name="dia">
+                        </div>
+                        <div class="btn-options">
+                            <button type="submit" class="btn btn-primary">Cadastrar hotel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section name="putReserva">
+            <div class="form">
+                <h2>Fazer a reserva</h2>
+                <form action="/hotel/disponibilidade" method="put">
+                    <div class="form-content">
+                        <div>
+                            <label for="">id da reserva</label>
+                            <input type="number" name="id">
+                        </div>
+                        <div>
+                            <label for="">id do quarto</label>
+                            <input type="number" name="quartoId">
+                        </div>
+                        <div>
+                            <label for="">Dia</label>
+                            <input type="date" name="dia">
+                        </div>
+                        <div>
+                            <label for="">Id do usuário</label>
+                            <input type="number" name="usuarioId">
+                        </div>
+                        <div class="btn-options">
+                            <button type="submit" class="btn btn-primary">Cadastrar hotel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section name="cadastroHotel">
+            <div class="form">
+                <h2>Cadastro de Hotel</h2>
+                <form action="/hotel" method="post">
+                    <div class="form-content">
+                        <div>
+                            <label for="">Nome do Hotel</label>
+                            <input type="text" name="nome">
+                        </div>
+                        <div>
+                            <label for="">Endereço</label>
+                            <input type="text" name="endereco">
+                        </div>
+                        <div class="btn-options">
+                            <button type="submit" class="btn btn-primary">Cadastrar hotel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section name="getHotel">
 
-   </section>
-   <section>
-
-   </section>
-   <section>
-
-   </section>
-   <section>
-
-   </section>
+        </section>
+        <section name="getQuartos">
+            
+        </section>
+        <section name="reservasQuartos">
+            <form action="">
+                <h2>Buscar reservas</h2>
+            </form>
+            <input type="text">
+        </section>
+    </main>
+    <script src="http://localhost:8090/js/script.js"></script>
 </body>
 </html>

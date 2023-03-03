@@ -71,11 +71,11 @@ route.get("/usuario/", (req, res) => {
 })
 route.post("/usuario", (req, res) => {
     db.createUsuario(req.body.email, req.body.senha);
-    res.status(200).send("Usuario cadastrado")
+    res.status(200).redirect("/")
 })
 route.put("/usuario", (req, res) => {
     db.updateUsuario(req.body.id, req.body.email, req.body.senha);
-    res.status(200).send("Usuario atualizado")
+    res.status(200).redirect("/")
 })
 route.delete("/usuario", (req, res) => {
     db.deleteUsuario(req.body.usuarioId);
@@ -88,21 +88,22 @@ route.get("/quarto/", (req, res) => {
     })
 })
 route.post("/quarto", (req, res) => {
-    db.createQuarto(req.body.numero, req.body.hotelID);
-    res.sendStatus(200);
+    db.createQuarto(req.body.numero, req.body.hotelId);
+    res.status(200).redirect('/');
 })
 route.put("/quarto", (req, res) => {
-    db.updateQuarto(req.body.id, req.body.numero, req.body.hotelID);
-    res.sendStatus(200);
+    db.updateQuarto(req.body.id, req.body.numero, req.body.hotelId);
+    res.status(200).redirect('/');
 })
 route.delete("/quarto", (req, res) => {
     db.deleteQuarto(req.body.id);
-    res.sendStatus(200);
+    res.status(200).redirect('/');
 })
 
 route.post("/disponibilidade", (req, res) => {
+    console.log(req.body);
     db.createDisponibilidade(req.body.quartoId, req.body.dia);
-    res.sendStatus(200);
+    res.status(200).redirect('/');
 })
 route.get("/disponibilidade", (req, res) => {
     console.log(req.body)

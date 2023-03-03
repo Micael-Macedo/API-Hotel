@@ -1,0 +1,10 @@
+@media screen and (max-width: 500px) {
+    .btn-options{
+        margin-top: 50px;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    .btn-options p{
+        font-size: 9px;
+    }
+}
